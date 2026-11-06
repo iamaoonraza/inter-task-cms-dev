@@ -1,15 +1,13 @@
-# Senior CMS Developer Task
+# CMS Developer Task
 
 Two separate parts:
 
 - `wordpress/ropstam-services` is a plugin with a Services post type and a price calculator block.
 - `shopify` is an Online Store 2.0 section for building a 3-pack bundle.
 
-Neither part has a build step or third party dependency.
-
 ## WordPress
 
-Requires WordPress 6.3+ and PHP 7.4+.
+Requires WordPress 6.3+ and PHP 7.4+. No build step or third party dependency.
 
 ### Setup
 
@@ -37,7 +35,7 @@ add_filter( 'ropstam_services_addons', function ( $addons ) {
 } );
 ```
 
-### Edge cases
+### Cases
 
 - No services: a message is shown.
 - Service without a price: shows "Contact us for pricing" and no calculator.
@@ -80,7 +78,7 @@ In the theme editor, open the bundle builder section and choose a collection or 
 - `/cart/add.js` receives all the items in one request. Each line has a visible `Bundle` property and a hidden `_bundle_id` property that links them.
 - A `bundle:added` event fires on `document` after a successful add, so a theme can refresh its cart drawer.
 
-### Edge cases
+### Cases
 
 - Sold out product: the card is disabled and has a badge.
 - Whole group sold out: a message is shown and the button is disabled.
@@ -91,7 +89,7 @@ In the theme editor, open the bundle builder section and choose a collection or 
 ## Assumptions and limitations
 
 - WordPress prices are in USD.
-- A store discount is not applied. The bundle price is the sum of the three items, because a real discount needs an automatic discount or a Shopify Function.
+- No bundle discount is applied. The bundle price is the sum of the items, because a real discount needs an automatic discount or a Shopify Function.
 - Groups show the first 12 products. If those are all sold out, the group counts as sold out.
 - The section works with fewer than 3 groups, as the brief says "up to 3". The theme editor shows a notice in that case.
 - Selling plans (subscriptions) are not handled.
@@ -100,4 +98,6 @@ In the theme editor, open the bundle builder section and choose a collection or 
 ## Demo links
 
 - WordPress: https://taskwp.indoorplantsbuy.com/?page_id=13
-- Shopify: https://ropstam-demo.myshopify.com/pages/bundle-builder (password: `your-password`)
+- WordPress-Admin: https://taskwp.indoorplantsbuy.com/wp-admin (User: admin / Pass: Admin@12312345)
+
+- Shopify: https://ropstam-demo.myshopify.com/pages/bundle-builder (password: `123456`)
