@@ -1,0 +1,131 @@
+/* Colours come from the active theme, with neutral fallbacks. */
+.rs-services {
+	--rs-text: var(--wp--preset--color--contrast, #1a1a1a);
+	--rs-surface: var(--wp--preset--color--base, #fff);
+	--rs-border: color-mix(in srgb, var(--rs-text) 15%, transparent);
+	--rs-muted: color-mix(in srgb, var(--rs-text) 70%, transparent);
+	--rs-tint: color-mix(in srgb, var(--rs-text) 6%, transparent);
+
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 1.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.rs-service {
+	display: flex;
+	flex-direction: column;
+	padding: 1.75rem;
+	border: 1px solid var(--rs-border);
+	border-radius: 12px;
+	background: var(--rs-surface);
+	color: var(--rs-text);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.rs-service__title {
+	margin: 0 0 0.75rem;
+	font-size: 1.375rem;
+	line-height: 1.3;
+}
+
+.rs-service__title a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.rs-service__title a:hover,
+.rs-service__title a:focus-visible {
+	text-decoration: underline;
+}
+
+.rs-service__delivery {
+	align-self: flex-start;
+	margin: 0 0 1.5rem;
+	padding: 0.25rem 0.75rem;
+	border-radius: 999px;
+	background: var(--rs-tint);
+	font-size: 0.875rem;
+}
+
+[data-service-calculator] {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.rs-addons {
+	margin: 0 0 1.5rem;
+	padding: 0;
+	border: 0;
+}
+
+.rs-addons legend {
+	margin-bottom: 0.5rem;
+	padding: 0;
+	color: var(--rs-muted);
+	font-size: 0.875rem;
+	font-weight: 600;
+}
+
+.rs-addon {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	min-height: 44px;
+	margin-bottom: 0.5rem;
+	padding: 0.5rem 0.75rem;
+	border: 1px solid var(--rs-border);
+	border-radius: 8px;
+	font-size: 0.9375rem;
+	line-height: 1.3;
+	cursor: pointer;
+}
+
+.rs-addon:hover,
+.rs-addon:has(input:checked) {
+	background: var(--rs-tint);
+}
+
+.rs-addon:has(input:checked) {
+	border-color: var(--rs-text);
+}
+
+.rs-addon input {
+	flex-shrink: 0;
+	width: 1.125rem;
+	height: 1.125rem;
+	margin: 0;
+	accent-color: var(--rs-text);
+}
+
+.rs-addon input:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+.rs-addon__price {
+	margin-left: auto;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+/* The auto margin keeps totals lined up when cards have different content. */
+.rs-service__total {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.25rem 1rem;
+	margin: auto 0 0;
+	padding-top: 1.25rem;
+	border-top: 1px solid var(--rs-border);
+	font-weight: 600;
+}
+
+.rs-service__total output {
+	font-size: 1.625rem;
+	line-height: 1.2;
+}
