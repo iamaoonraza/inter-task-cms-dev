@@ -86,6 +86,23 @@ In the theme editor, open the bundle builder section and choose a collection or 
 - Item sells out after the page loaded: the message returned by Shopify is shown.
 - Network or server failure: a retry message is shown and the button is enabled again.
 
+## Key technical decisions
+
+**WordPress**
+
+- Plugin instead of theme code, so the services and block keep working if the theme changes.
+- Dynamic block, so the page always shows the latest services without saving the post again.
+- `WP_Query` instead of raw SQL, as it is the standard and safer way to read posts.
+- Add-ons come from a filter, because the brief asks for only two meta fields.
+
+**Shopify**
+
+- Section instead of an app, because no backend is needed and merchants can set it up in the theme editor.
+- Blocks for groups, so merchants can add, remove and reorder them.
+- Native radio buttons, for built-in keyboard and screen reader support.
+- Custom element in vanilla JavaScript, with no library. It also starts again by itself when the theme editor reloads the section.
+- One `/cart/add.js` request for all items, with a shared `_bundle_id` to link the cart lines.
+
 ## Assumptions and limitations
 
 - WordPress prices are in USD.
