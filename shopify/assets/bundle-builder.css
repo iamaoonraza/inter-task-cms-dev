@@ -1,0 +1,335 @@
+/* Sizes are in px because themes set different root font sizes (Dawn uses 62.5%). */
+.bundle-builder-section {
+  padding-block: 48px;
+}
+
+.bundle-builder__heading {
+  margin: 0 0 8px;
+  font-size: clamp(28px, 4vw, 40px);
+}
+
+.bundle-builder__intro {
+  margin-bottom: 32px;
+  font-size: 16px;
+}
+
+.bundle-builder__intro p {
+  margin: 0;
+}
+
+.bundle-builder__notice {
+  padding: 12px 16px;
+  border: 1px dashed currentColor;
+  font-size: 14px;
+}
+
+.bundle-builder__layout {
+  display: grid;
+  gap: 32px;
+}
+
+.bundle-group {
+  min-width: 0;
+  margin: 0 0 32px;
+  padding: 0;
+  border: 0;
+  scroll-margin-top: 24px;
+}
+
+.bundle-group:last-child {
+  margin-bottom: 0;
+}
+
+.bundle-group:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.bundle-group__title {
+  margin-bottom: 16px;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.bundle-group__items {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.bundle-group__empty {
+  margin: 12px 0 0;
+  color: #b42318;
+  font-size: 14px;
+}
+
+.bundle-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  transition: border-color 0.15s ease;
+}
+
+.bundle-item:hover {
+  border-color: rgba(0, 0, 0, 0.45);
+}
+
+.bundle-item:has(.bundle-item__input:checked) {
+  border-color: currentColor;
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+
+.bundle-item:has(.bundle-item__input:checked)::after {
+  content: "\2713";
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #121212;
+  color: #fff;
+  font-size: 13px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.bundle-item:has(.bundle-item__input:focus-visible) {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.bundle-item--sold-out,
+.bundle-item--sold-out:hover {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.bundle-item--sold-out .bundle-item__image,
+.bundle-item--sold-out .bundle-item__title,
+.bundle-item--sold-out .bundle-item__price {
+  opacity: 0.5;
+}
+
+.bundle-item__main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 4px;
+  padding: 10px 10px 12px;
+  font-size: 14px;
+  line-height: 1.35;
+  cursor: pointer;
+}
+
+.bundle-item--sold-out .bundle-item__main {
+  cursor: not-allowed;
+}
+
+/* Keeps the native radio focusable and readable by screen readers. */
+.bundle-item__input {
+  position: absolute;
+  opacity: 0;
+}
+
+.bundle-item__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.04);
+  object-fit: cover;
+}
+
+.bundle-item__title {
+  font-weight: 600;
+}
+
+.bundle-item__badge {
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 2px 8px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.bundle-item__variant {
+  padding: 0 10px 12px;
+}
+
+.bundle-item__variant select {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 40px;
+  padding: 0 8px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font-size: 14px;
+}
+
+.bundle-item__variant-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* On phones the total and button stay in view while customers scroll the groups. */
+.bundle-summary {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  display: grid;
+  gap: 10px;
+  margin-inline: -15px;
+  padding: 12px 15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  background: rgb(var(--color-background, 255, 255, 255));
+}
+
+.bundle-summary__heading,
+.bundle-summary__items {
+  display: none;
+}
+
+.bundle-summary__total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.bundle-summary__total output {
+  font-size: 22px;
+}
+
+.bundle-summary__button {
+  width: 100%;
+  min-height: 48px;
+  font-size: 15px;
+}
+
+.bundle-summary__button.is-loading {
+  position: relative;
+  color: transparent;
+}
+
+.bundle-summary__button.is-loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 20px;
+  height: 20px;
+  margin: auto;
+  border: 2px solid #fff;
+  border-right-color: transparent;
+  border-radius: 50%;
+  box-shadow: none;
+  animation: bundle-spin 0.7s linear infinite;
+}
+
+.bundle-summary__status {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.bundle-summary__status:empty {
+  display: none;
+}
+
+.bundle-summary__status--error {
+  color: #b42318;
+}
+
+@media (min-width: 750px) {
+  .bundle-group__items {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 16px;
+  }
+
+  .bundle-item__main {
+    padding: 12px 12px 14px;
+  }
+
+  .bundle-item__variant {
+    padding: 0 12px 14px;
+  }
+}
+
+@media (min-width: 990px) {
+  .bundle-builder__layout {
+    grid-template-columns: minmax(0, 1fr) 340px;
+    align-items: start;
+    gap: 48px;
+  }
+
+  .bundle-summary {
+    top: 24px;
+    bottom: auto;
+    gap: 16px;
+    margin-inline: 0;
+    padding: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+  }
+
+  .bundle-summary__heading {
+    display: block;
+    margin: 0;
+    font-size: 20px;
+  }
+
+  .bundle-summary__items {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0 0 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    font-size: 14px;
+    line-height: 1.35;
+    list-style: none;
+  }
+
+  .bundle-summary__items li {
+    opacity: 0.6;
+  }
+
+  .bundle-summary__items li.is-selected {
+    font-weight: 600;
+    opacity: 1;
+  }
+
+  .bundle-summary__total output {
+    font-size: 26px;
+  }
+}
+
+@keyframes bundle-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bundle-item {
+    transition: none;
+  }
+
+  .bundle-summary__button.is-loading::after {
+    animation-duration: 2s;
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "main": {
+      "type": "bundle-builder",
+      "blocks": {
+        "group-1": {
+          "type": "group",
+          "settings": {
+            "title": "Choose your first item"
+          }
+        },
+        "group-2": {
+          "type": "group",
+          "settings": {
+            "title": "Choose your second item"
+          }
+        },
+        "group-3": {
+          "type": "group",
+          "settings": {
+            "title": "Choose your third item"
+          }
+        }
+      },
+      "block_order": ["group-1", "group-2", "group-3"]
+    }
+  },
+  "order": ["main"]
+}
